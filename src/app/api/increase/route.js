@@ -1,18 +1,20 @@
-import { db } from '@/library/fb-config';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
+import { getFirestore } from 'firebase-admin/firestore'
+import { customInitApp } from '@/library/fb-admin-config';
 
 export async function POST(req, res) {
-
+    customInitApp();
+    const store = getFirestore();
     const reqData = await req.json();
-
-    const dataRef = doc(db, "col", "doc");
-    const docSnap = await getDoc(dataRef);
-    if (docSnap.exists()) {
-        console.log('use api route : increase');
-        const data = docSnap.data();
-        await updateDoc(docSnap, `${data.num + { reqData }}`);
+    const dataRef = store.collection('col').doc('doc');
+    const dataSnap = await dataRef.get();
+    if (dataSnap.exists) {
+        const getData = dataSnap.data();
+        const num = getData.num
+        const newData = {
+            num: Number(num) + Number(reqData.num)
+        }
+        await dataRef.update(newData)
     }
-
     return NextResponse.json({}, { status: 200 })
 }

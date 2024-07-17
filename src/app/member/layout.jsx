@@ -1,6 +1,6 @@
 "use client";
 
-import { auth, db } from "@/library/fb-config";
+import { auth, store } from "@/library/fb-config";
 import { onAuthStateChanged } from "firebase/auth";
 import { collection, doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -10,7 +10,7 @@ export default function Memberlayout({ children }) {
   useEffect(() => {
     const sign = onAuthStateChanged(auth, async (userCred) => {
       if (userCred) {
-        const dataRef = doc(db, "col", "doc");
+        const dataRef = doc(store, "col", "doc");
         const docSnap = await getDoc(dataRef);
         if (docSnap.exists()) {
           const data = docSnap.data();

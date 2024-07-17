@@ -1,6 +1,6 @@
 "use client";
 
-import { db } from "@/library/fb-config";
+import { store } from "@/library/fb-config";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import Logoutbtn from "@/components/Logout";
@@ -16,12 +16,15 @@ export default function Memberpage() {
       },
       body: JSON.stringify({
         title: "increase",
-        body: "2",
+        num: "3",
       }),
     };
-    fetch(url, options);
-    // .then((res) => res.json())
-    // .then((data) => console.log(data));
+    fetch(url, options).then((res) => {
+      if (res.status === 200) {
+        console.log("success incresase");
+        route.refresh();
+      }
+    });
   };
 
   const onClickDecreate = async (e) => {
@@ -36,13 +39,16 @@ export default function Memberpage() {
         num: "3",
       }),
     };
-    fetch(url, options);
-    // .then((res) => res.json())
-    // .then((data) => console.log(data));
+    fetch(url, options).then((res) => {
+      if (res.status === 200) {
+        console.log("success decresase");
+        route.refresh();
+      }
+    });
   };
   //
   const onClickClientIecreate = async (e) => {
-    const dataRef = doc(db, "col", "doc");
+    const dataRef = doc(store, "col", "doc");
     const docSnap = await getDoc(dataRef);
     const data = docSnap.data();
     const newData = { num: Number(data.num + 3) };
@@ -51,7 +57,7 @@ export default function Memberpage() {
   };
   //
   const onClickClientDecreate = async (e) => {
-    const dataRef = doc(db, "col", "doc");
+    const dataRef = doc(store, "col", "doc");
     const docSnap = await getDoc(dataRef);
     const data = docSnap.data();
     const newData = { num: Number(data.num - 3) };

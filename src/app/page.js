@@ -5,7 +5,6 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function LogInBtn() {
@@ -46,7 +45,7 @@ export default function LogInBtn() {
         <input type='text' value={pw} onChange={e => setPw(e.target.value)} />
         <button onClick={(e) => onClickCreateAccount(e)}>create ac</button>
       </div>
-      {msg === "logIn" ? <Link href={"/member"}>member</Link> : ""}
+      {msg === "logIn" ? <div>{`- success lon in -`}</div> : ""}
     </div>
   );
 }
