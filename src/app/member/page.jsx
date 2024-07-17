@@ -10,14 +10,14 @@ import { onAuthStateChanged } from "firebase/auth";
 export default function Memberpage() {
   const route = useRouter();
 
-  useEffect(() => {
-    const errTest = onAuthStateChanged(auth, async () => {
-      const url = `/api/logIn`;
-      const options = { method: "GET" };
-      await fetch(url, options);
-      return () => errTest();
-    });
-  }, []);
+  // useEffect(() => {
+  //   const errTest = onAuthStateChanged(auth, async () => {
+  //     const url = `/api/logIn`;
+  //     const options = { method: "GET" };
+  //     await fetch(url, options);
+  //     return () => errTest();
+  //   });
+  // }, []);
 
   const onClickIncrease = async (e) => {
     const url = "/api/increase";
@@ -85,8 +85,6 @@ export default function Memberpage() {
       <div>client carculator</div>
       <button onClick={(e) => onClickClientIecreate(e)}>client increase</button>
       <button onClick={(e) => onClickClientDecreate(e)}>client decreate</button>
-      <div>-----logout btn-----</div>
-      <Logoutbtn />
     </div>
   );
 }

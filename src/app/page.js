@@ -11,6 +11,15 @@ export default function LogInBtn() {
   const [id, setId] = useState("qwe@mail.com");
   const [pw, setPw] = useState("qweasdzxc");
   const [msg, setMsg] = useState("");
+ 
+  useEffect(() => {
+    const errTest = onAuthStateChanged(auth, async () => {
+      const url = `/api/logIn`;
+      const options = { method: "GET" };
+      await fetch(url, options);
+      return () => errTest();
+    });
+  }, []);
 
   useEffect(() => {
     const signCheck = onAuthStateChanged(auth, (userCred) => {
