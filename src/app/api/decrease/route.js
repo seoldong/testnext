@@ -9,6 +9,7 @@ export async function POST(req, res) {
     const dataRef = doc(db, "col", "doc");
     const docSnap = await getDoc(dataRef);
     if (docSnap.exists()) {
+        console.log('use api route : decrease');
         const data = docSnap.data();
         await updateDoc(docSnap, `${data.num - { reqData }}`);
     }
