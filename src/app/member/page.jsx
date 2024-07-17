@@ -1,12 +1,24 @@
 "use client";
 
-import { store } from "@/library/fb-config";
+import { auth, store } from "@/library/fb-config";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import Logoutbtn from "@/components/Logout";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
 
 export default function Memberpage() {
   const route = useRouter();
+
+  useEffect(() => {
+    const errTest = onAuthStateChanged(auth, async () => {
+      const url = `/api/logIn`;
+      const options = { method: "GET" };
+      await fetch(url, options);
+      return () => errTest();
+    });
+  }, []);
+
   const onClickIncrease = async (e) => {
     const url = "/api/increase";
     const options = {
