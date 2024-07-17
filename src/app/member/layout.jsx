@@ -9,13 +9,14 @@ export default function Memberlayout({ children }) {
   const [data, setData] = useState("");
   useEffect(() => {
     const sign = onAuthStateChanged(auth, async (userCred) => {
-      console.log("uid", userCred?.uid);
       if (userCred) {
         const dataRef = doc(db, "col", "doc");
         const docSnap = await getDoc(dataRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
           setData(data.num);
+        } else {
+          console.log("no user");
         }
       }
     });
