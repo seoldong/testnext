@@ -1,7 +1,7 @@
 import Logoutbtn from '@/components/Logout';
-import { customInitApp } from '@/library/fb-admin-config';
-import { auth } from 'firebase-admin';
-import { cookies } from 'next/headers';
+// import { customInitApp } from '@/library/fb-admin-config';
+// import { auth } from 'firebase-admin';
+// import { cookies } from 'next/headers';
 import Link from 'next/link';
 
 export const metadata = {
@@ -11,12 +11,12 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
 
-  customInitApp();
-  const cookieStore = cookies();
-  const session = cookieStore.get("session")?.value;
-  if (session) {
-    // const decodedClaims = await auth().verifySessionCookie(session, true);
-  }
+  // customInitApp();
+  // const cookieStore = cookies();
+  // const session = cookieStore.get("session")?.value;
+  // if (session) {
+  //   // const decodedClaims = await auth().verifySessionCookie(session, true);
+  // }
 
   return (
     <html lang="en">

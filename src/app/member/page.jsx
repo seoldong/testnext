@@ -19,45 +19,45 @@ export default function Memberpage() {
   //   });
   // }, []);
 
-  const onClickIncrease = async (e) => {
-    const url = "/api/increase";
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title: "increase",
-        num: "3",
-      }),
-    };
-    fetch(url, options).then((res) => {
-      if (res.status === 200) {
-        console.log("success incresase");
-        route.refresh();
-      }
-    });
-  };
+  // const onClickIncrease = async (e) => {
+  //   const url = "/api/increase";
+  //   const options = {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       title: "increase",
+  //       num: "3",
+  //     }),
+  //   };
+  //   fetch(url, options).then((res) => {
+  //     if (res.status === 200) {
+  //       console.log("success incresase");
+  //       route.refresh();
+  //     }
+  //   });
+  // };
 
-  const onClickDecreate = async (e) => {
-    const url = "/api/decrease";
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title: "decrease",
-        num: "3",
-      }),
-    };
-    fetch(url, options).then((res) => {
-      if (res.status === 200) {
-        console.log("success decresase");
-        route.refresh();
-      }
-    });
-  };
+  // const onClickDecreate = async (e) => {
+  //   const url = "/api/decrease";
+  //   const options = {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       title: "decrease",
+  //       num: "3",
+  //     }),
+  //   };
+  //   fetch(url, options).then((res) => {
+  //     if (res.status === 200) {
+  //       console.log("success decresase");
+  //       route.refresh();
+  //     }
+  //   });
+  // };
   //
   const onClickClientIecreate = async (e) => {
     const dataRef = doc(store, "col", "doc");
@@ -80,8 +80,8 @@ export default function Memberpage() {
   return (
     <div>
       <div>api carculator</div>
-      <button onClick={(e) => onClickIncrease(e)}>api increase</button>
-      <button onClick={(e) => onClickDecreate(e)}>api decreate</button>
+      {/* <button onClick={(e) => onClickIncrease(e)}>api increase</button> */}
+      {/* <button onClick={(e) => onClickDecreate(e)}>api decreate</button> */}
       <div>client carculator</div>
       <button onClick={(e) => onClickClientIecreate(e)}>client increase</button>
       <button onClick={(e) => onClickClientDecreate(e)}>client decreate</button>

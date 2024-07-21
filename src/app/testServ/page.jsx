@@ -1,18 +1,20 @@
-import { customInitApp } from '@/library/fb-admin-config';
-import { getFirestore } from 'firebase-admin/firestore';
+// import { customInitApp } from '@/library/fb-admin-config';
+// import { getFirestore } from 'firebase-admin/firestore';
 
 export default async function TestServPage() {
 
-    customInitApp();
+    // customInitApp();
 
-    const store = getFirestore();
-    const dataRef = store.collection('col').doc('doc');
-    const dataSnap = await dataRef.get();
-    let data;
-    if (dataSnap.exists) {
-        const getData = dataSnap.data();
-        data = getData.text2;
-    }
+    // const store = getFirestore();
+    // const dataRef = store.collection('col').doc('doc');
+    // const dataSnap = await dataRef.get();
+    // let data;
+    // if (dataSnap.exists) {
+    //     const getData = dataSnap.data();
+    //     data = getData.text2;
+    // }
+
+    const data = 123
 
     return (
         <div>

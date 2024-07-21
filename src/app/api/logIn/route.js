@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
+// import { NextResponse } from 'next/server';
 
-export function GET() {
+// export function GET() {
 
-    return NextResponse.json({}, { status: 500 })
-}
+//     return NextResponse.json({}, { status: 500 })
+// }
